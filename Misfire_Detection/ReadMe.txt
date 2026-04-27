@@ -12,7 +12,8 @@ This script identifies misfire events in an internal combustion engine using the
 
 * The script is designed for use in **CoKpit2** (KiBox2 software).
 * All variables must be defined and initialized in the Variables table (right-side panel) before running the script.
-* Typical initial values for variables should be set to `0`.
+* Typical initial values for variables should be set to '0'.
+* Copy and paste the script in the 'User Calculator' window.
 
 ### Outputs
 
