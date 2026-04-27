@@ -1,0 +1,32 @@
+%This script calculates the missfire percentage 'average of 100 points' each 50 cycles
+
+% ===== Misfire detection =====
+if IMEPN(1) <= 0
+    MisfireFlag(1) = 1;
+else
+    MisfireFlag(1) = 0;
+end
+
+% ==== Accumulate current 50-cycle block =====
+Sum3(1) = Sum3(1) + MisfireFlag(1);
+Counter(1) = Counter(1) + 1;
+
+% ===== Calculate the average every 50 cycles =====
+if Counter(1) == 50
+
+    % Compute over last 100 cycles
+    MisfirePercent(1) = (Sum1(1) + Sum2(1))/100*100;
+
+    % Shift blocks
+    Sum1(1) = Sum2(1);
+    Sum2(1) = Sum3(1);
+    Sum3(1) = 0;
+
+    % Reset counter
+    Counter(1) = 0;
+
+end
+
+% ===== Outputs =====
+Out1(1) = MisfireFlag(1);
+Out2(1) = MisfirePercent(1);
